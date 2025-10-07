@@ -2,46 +2,43 @@
 const projects = [
   {
     name: 'Arcana Finance',
-    description:
-      'Reimagined the core dashboard for a crypto wealth product with modular data cards, advanced filters and a high-converting launch site built in Webflow.',
+    description: 'Plataforma DeFi enfocada en inversiones automatizadas. Rediseñé el onboarding, dashboards y marketing site.',
     year: '2023',
     link: '#',
     thumbnail: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Product design', 'Webflow dev', 'Motion']
+    tags: ['UX Strategy', 'Design System', 'Webflow']
   },
   {
     name: 'Forma AI',
-    description:
-      'Design system and marketing ecosystem for an AI sales assistant. Delivered component libraries, interactive demos and Webflow CMS automation.',
+    description: 'Aplicación SaaS para equipos de ventas. Construí componentes reutilizables y dashboards con métricas en tiempo real.',
     year: '2022',
     link: '#',
     thumbnail: 'https://images.unsplash.com/photo-1618005198900-3dc8f9a6723c?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Design system', 'Brand refresh', 'CMS automation']
+    tags: ['Product Design', 'Motion', 'Front-end']
   },
   {
     name: 'Marea Studio',
-    description:
-      'Immersive Webflow experience for a creative studio with scroll-based storytelling, custom interactions and a bespoke CMS for case studies.',
+    description: 'Sitio web inmersivo para estudio creativo. Implementación Webflow con animaciones complejas y CMS dinámico.',
     year: '2021',
     link: '#',
     thumbnail: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Art direction', 'Interactions', 'Webflow']
+    tags: ['Branding', 'Webflow', '3D Motion']
   }
 ];
 ---
 <section id="proyectos" class="relative py-28">
-  <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
-  <div class="mx-auto max-w-6xl px-6 lg:px-8">
-    <div class="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-xl space-y-4">
-        <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">Selected work</span>
-        <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">Signature projects & collaborations</h2>
+  <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Proyectos</span>
+        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Selección de trabajos recientes</h2>
       </div>
       <a
         href="#contacto"
         class="inline-flex items-center gap-3 text-sm font-medium text-white/70 transition hover:text-white"
       >
-        Request full portfolio
+        Ver todos los proyectos
         <svg
           class="h-4 w-4 -rotate-45"
           fill="none"
@@ -56,62 +53,54 @@ const projects = [
         </svg>
       </a>
     </div>
-    <div class="space-y-12">
+    <div class="space-y-8">
       {projects.map((project, index) => (
         <article
           data-animate="fade-up"
-          class={`group relative overflow-hidden rounded-[3rem] border border-white/10 bg-charcoal/70 transition duration-500 hover:border-accent/60 hover:bg-charcoal/90 ${
-            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          class={`relative overflow-hidden rounded-3xl border border-white/10 bg-charcoal/60 transition hover:border-accent/60 ${
+            index % 2 === 1 ? 'md:flex-row-reverse' : ''
           }`}
-          style={`transition-delay: ${index * 80}ms;`}
         >
-          <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-            <figure class={`relative overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-              <div class="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-transparent opacity-0 transition duration-700 group-hover:opacity-100"></div>
+          <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+            <figure class="relative overflow-hidden">
               <img
                 src={project.thumbnail}
                 alt={project.name}
-                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
                 loading="lazy"
               />
             </figure>
-            <div class={`flex h-full flex-col justify-between gap-8 p-10 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div class="space-y-5">
-                <div class="flex items-center gap-4 text-xs font-mono uppercase tracking-[0.4em] text-white/40">
-                  <span>{project.year}</span>
-                  <span class="h-px w-10 bg-white/10"></span>
-                  <span>Case study</span>
-                </div>
+            <div class="flex flex-col justify-between gap-8 p-10">
+              <div class="space-y-4">
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">{project.year}</span>
                 <h3 class="text-3xl font-semibold text-white">{project.name}</h3>
-                <p class="text-sm leading-relaxed text-white/60">{project.description}</p>
+                <p class="text-sm text-white/60">{project.description}</p>
               </div>
-              <div class="flex flex-wrap items-center gap-4">
-                <div class="flex flex-wrap gap-2 text-xs text-white/60">
-                  {project.tags.map((tag) => (
-                    <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={project.link}
-                  class="group/link inline-flex items-center gap-2 text-sm font-medium text-white transition hover:text-accent"
+              <div class="flex flex-wrap gap-3 text-xs text-white/60">
+                {project.tags.map((tag) => (
+                  <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.link}
+                class="group inline-flex items-center gap-2 self-start text-sm font-medium text-white transition hover:text-accent"
+              >
+                Ver caso de estudio
+                <svg
+                  class="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
                 >
-                  View case study
-                  <svg
-                    class="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover/link:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.8"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
             </div>
           </div>
         </article>

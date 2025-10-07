@@ -1,80 +1,65 @@
 ---
-const highlights = [
+const companies = [
   {
-    period: '2023 — Present',
+    period: '2022 — Presente',
     company: 'Flowbase Studio',
     role: 'Lead Product Designer',
     description:
-      'Leading product initiatives for SaaS companies, crafting interaction-heavy dashboards and launching Webflow marketing ecosystems.',
-    metrics: ['+32% product adoption', 'Design system for 3 platforms', 'Motion guidelines rollout']
+      'Dirijo el diseño de productos SaaS para startups globales. Lidero procesos de discovery, prototipado y handoff con equipos multidisciplinarios.',
+    tags: ['Design Strategy', 'Design Systems', 'User Testing']
   },
   {
-    period: '2021 — 2023',
+    period: '2020 — 2022',
     company: 'Northstar',
     role: 'Senior UX/UI Designer',
     description:
-      'Owned end-to-end redesign of the core fintech experience, running research sprints, prototypes and implementing atomic design foundations.',
-    metrics: ['35% onboarding boost', 'Research ops playbook', 'Multi-brand component library']
+      'Rediseño integral de aplicaciones financieras. Mejoré métricas de activación en un 35% mediante nuevas journeys y motion UI.',
+    tags: ['Fintech', 'Motion Design', 'Research']
   },
   {
-    period: '2018 — 2021',
+    period: '2018 — 2020',
     company: 'Freelance',
     role: 'Product Designer & Webflow Expert',
     description:
-      'Partnered with startups across Europe & LATAM delivering design systems, immersive marketing sites and product launches with Webflow & GSAP.',
-    metrics: ['50+ shipped projects', 'Webflow enterprise partners', 'Work featured on Awwwards']
+      'Creación de landing pages high-converting y dashboards complejos para startups seed-stage en LATAM y Europa.',
+    tags: ['SaaS', 'Startups', 'Branding']
   }
 ];
 ---
 <section id="experiencia" class="relative py-28">
-  <div class="mx-auto max-w-6xl px-6 lg:px-8">
-    <div class="mb-14 max-w-3xl space-y-4">
-      <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">Experience</span>
-      <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">A decade designing for digital-first brands</h2>
-      <p class="text-sm text-white/60">
-        I’ve worked with cross-functional teams, bridging strategy, design and development to ship products that feel alive and deliver measurable outcomes.
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 space-y-4">
+      <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Experiencia</span>
+      <h2 class="text-3xl font-semibold text-white md:text-4xl">Trayectoria y resultados comprobables</h2>
+      <p class="max-w-2xl text-sm text-white/60">
+        Cada etapa me permitió fortalecer la intersección entre diseño, producto y negocio. Aquí algunos hitos recientes.
       </p>
     </div>
-    <div class="relative grid gap-10 lg:grid-cols-[0.35fr_1fr]">
-      <div class="space-y-8" data-animate="fade-up">
-        <div class="rounded-3xl border border-white/10 bg-charcoal/70 p-6">
-          <p class="text-xs font-mono uppercase tracking-[0.45em] text-white/40">Expertise</p>
-          <ul class="mt-4 space-y-3 text-sm text-white/70">
-            <li>Product strategy & vision facilitation</li>
-            <li>Design system architecture</li>
-            <li>Motion design & interactions</li>
-            <li>Webflow enterprise builds</li>
-          </ul>
-        </div>
-        <div class="rounded-3xl border border-white/10 bg-charcoal/70 p-6">
-          <p class="text-xs font-mono uppercase tracking-[0.45em] text-white/40">Toolset</p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-white/60">
-            {['Figma', 'Webflow', 'GSAP', 'Spline', 'After Effects', 'Notion', 'Jira'].map((tool) => (
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" key={tool}>{tool}</span>
-            ))}
-          </div>
-        </div>
+    <div class="relative border-l border-white/10 pl-10">
+      <div class="absolute left-0 top-0 -translate-x-1/2">
+        <span class="inline-flex h-3 w-3 rounded-full bg-accent shadow-glow"></span>
       </div>
-      <div class="space-y-8">
-        {highlights.map((item, index) => (
-          <article
-            class="relative overflow-hidden rounded-3xl border border-white/10 bg-charcoal/70 p-10 transition duration-500 hover:border-accent/60 hover:bg-charcoal/90"
-            data-animate="fade-up"
-            style={`transition-delay: ${index * 80}ms;`}
-          >
-            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">{item.period}</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs text-white/60">{item.role}</span>
+      <div class="space-y-12">
+        {companies.map((item) => (
+          <article class="relative space-y-4" data-animate="fade-up">
+            <span class="absolute -left-10 top-1.5 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-white/10 bg-charcoal text-[10px] font-semibold uppercase text-white/60">
+              ●
+            </span>
+            <p class="text-xs font-mono uppercase tracking-[0.35em] text-white/40">{item.period}</p>
+            <div class="flex flex-col gap-4 rounded-3xl border border-white/10 bg-charcoal/60 p-8">
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <h3 class="text-xl font-semibold text-white">{item.company}</h3>
+                <span class="text-sm text-white/50">{item.role}</span>
+              </div>
+              <p class="text-sm text-white/60">{item.description}</p>
+              <ul class="flex flex-wrap gap-3 text-xs font-medium text-white/60">
+                {item.tags.map((tag) => (
+                  <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1" key={tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <h3 class="mt-6 text-2xl font-semibold text-white">{item.company}</h3>
-            <p class="mt-4 text-sm leading-relaxed text-white/60">{item.description}</p>
-            <ul class="mt-6 grid gap-3 text-xs font-medium uppercase tracking-[0.25em] text-white/40 md:grid-cols-3">
-              {item.metrics.map((metric) => (
-                <li class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-[11px] leading-relaxed" key={metric}>
-                  {metric}
-                </li>
-              ))}
-            </ul>
           </article>
         ))}
       </div>

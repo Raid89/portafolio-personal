@@ -1,32 +1,34 @@
 <section id="inicio" class="relative overflow-hidden">
   <div class="absolute inset-0 -z-10">
-    <div class="pointer-events-none absolute inset-x-0 top-[-20%] h-[520px] bg-[radial-gradient(circle_at_top,_rgba(91,120,246,0.35)_0%,_transparent_55%)]"></div>
-    <div class="pointer-events-none absolute left-1/2 top-1/2 h-[640px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_transparent_65%)] blur-3xl"></div>
-    <div class="pointer-events-none absolute bottom-0 left-1/2 h-[520px] w-[520px] -translate-x-1/2 translate-y-1/3 rounded-full bg-[radial-gradient(circle,_rgba(91,120,246,0.18)_0%,_transparent_70%)] blur-3xl"></div>
+    <div class="absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+    <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]"></div>
   </div>
-  <div class="mx-auto grid max-w-6xl gap-16 px-6 pb-32 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8">
-    <div class="space-y-12">
-      <div class="space-y-6">
-        <span
-          data-animate="badge"
-          class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-[0.45em] text-white/60"
-        >
-          Product Designer & Webflow Expert
+  <div class="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-32 pt-28 lg:flex-row lg:items-center lg:justify-between">
+    <div class="max-w-xl space-y-10">
+      <span
+        data-animate="badge"
+        class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-[0.4em] text-white/60"
+      >
+        Disponible para freelance
+        <span class="relative h-2 w-2">
+          <span class="absolute inset-0 rounded-full bg-emerald-400"></span>
+          <span class="absolute inset-0 animate-ping rounded-full bg-emerald-400"></span>
         </span>
-        <h1 data-animate="headline" class="text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-          <span class="block">I design and build immersive</span>
-          <span class="block text-white/80">digital experiences for SaaS & tech brands.</span>
-        </h1>
-        <p class="max-w-xl text-lg text-white/70">
-          Nicolás Dev is a product designer focused on motion-rich interfaces, scalable design systems and high-performing Webflow builds for modern teams.
-        </p>
-      </div>
-      <div class="flex flex-wrap items-center gap-4">
+      </span>
+      <h1 data-animate="headline" class="text-4xl font-semibold leading-[1.12] text-white sm:text-5xl lg:text-6xl">
+        <span class="block">Nicolás Dev</span>
+        <span class="block text-white/80">Product Designer & Webflow Expert</span>
+      </h1>
+      <p class="text-lg text-white/70">
+        Diseño interfaces digitales premium y experiencias web fluidas que impulsan marcas modernas.
+        Desde estrategias UX hasta implementaciones de Webflow y Astro.
+      </p>
+      <div class="flex flex-col gap-4 sm:flex-row">
         <a
           href="#proyectos"
           class="group inline-flex items-center gap-3 rounded-full border border-transparent bg-white px-6 py-3 text-sm font-semibold text-midnight transition hover:-translate-y-1 hover:bg-secondary"
         >
-          Explore selected work
+          Ver proyectos
           <svg
             class="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
@@ -44,7 +46,7 @@
           href="#contacto"
           class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-accent/60 hover:bg-accent/10"
         >
-          View availability
+          Descargar CV
           <svg
             class="h-4 w-4"
             fill="none"
@@ -60,53 +62,41 @@
         </a>
       </div>
       <div class="grid gap-6 rounded-3xl border border-white/10 bg-charcoal/60 p-6 sm:grid-cols-3">
-        <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-[0.35em] text-white/40">Years crafting</span>
-          <p class="text-2xl font-semibold text-white">10+</p>
-          <p class="text-xs text-white/40">Multidisciplinary experience across design, strategy and dev.</p>
+        <div class="space-y-1">
+          <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Experiencia</span>
+          <p class="text-xl font-semibold text-white">8+ años</p>
         </div>
-        <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-[0.35em] text-white/40">Delivered projects</span>
-          <p class="text-2xl font-semibold text-white">120+</p>
-          <p class="text-xs text-white/40">From early-stage startups to established product teams.</p>
+        <div class="space-y-1">
+          <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Clientes</span>
+          <p class="text-xl font-semibold text-white">Startup & Enterprise</p>
         </div>
-        <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-[0.35em] text-white/40">Core stack</span>
-          <p class="text-2xl font-semibold text-white">Figma · Webflow · GSAP</p>
-          <p class="text-xs text-white/40">Interaction-driven design systems and no-code development.</p>
+        <div class="space-y-1">
+          <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Stack</span>
+          <p class="text-xl font-semibold text-white">Astro · Webflow · GSAP</p>
         </div>
       </div>
     </div>
-    <div class="relative mx-auto w-full max-w-md lg:mx-0">
-      <div class="relative overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-charcoal via-charcoal/80 to-midnight/70 p-8 shadow-[0_40px_120px_rgba(5,5,5,0.65)]">
-        <div class="absolute inset-x-10 top-10 h-48 rounded-full bg-gradient-to-b from-accent/25 via-transparent to-transparent blur-3xl"></div>
-        <div class="relative flex flex-col gap-6">
-          <div class="flex items-center justify-between">
+    <div class="relative mx-auto w-full max-w-sm lg:mx-0">
+      <div class="relative rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-charcoal via-charcoal to-midnight/40 p-6 shadow-2xl">
+        <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 p-10">
+          <div class="absolute inset-x-10 top-10 h-48 rounded-full bg-gradient-to-b from-accent/30 via-transparent to-transparent blur-2xl"></div>
+          <div class="relative flex flex-col items-center gap-6 text-center" data-animate="avatar">
+            <div class="relative h-40 w-40 overflow-hidden rounded-full border border-white/10">
+              <div class="absolute inset-0 bg-gradient-to-br from-accent/40 via-transparent to-purple-500/20"></div>
+              <div class="absolute inset-[6px] rounded-full bg-[url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center"></div>
+            </div>
             <div class="space-y-2">
-              <p class="text-xs font-mono uppercase tracking-[0.45em] text-white/40">Currently collaborating with</p>
-              <p class="text-sm font-medium text-white/80">Remote teams in Europe & LATAM</p>
+              <h2 class="text-2xl font-semibold text-white">Nicolás Dev</h2>
+              <p class="text-sm text-white/50">Product Designer | Webflow Expert</p>
             </div>
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm text-white/60">🌍</span>
-          </div>
-          <div class="grid gap-4">
-            <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5" data-animate="avatar">
-              <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80')] bg-cover bg-center opacity-70"></div>
-              <div class="relative flex h-56 flex-col justify-end bg-gradient-to-t from-midnight/80 via-midnight/20 to-transparent p-6">
-                <span class="text-xs font-mono uppercase tracking-[0.45em] text-white/60">Based in</span>
-                <span class="text-2xl font-semibold text-white">Buenos Aires, AR</span>
-                <span class="text-sm text-white/60">Open for remote collaborations worldwide.</span>
+            <div class="grid w-full gap-3 text-left">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p class="text-xs font-mono uppercase tracking-[0.3em] text-white/50">Especialidad</p>
+                <p class="mt-1 text-sm font-medium text-white">Productos SaaS & Plataformas No-Code</p>
               </div>
-            </div>
-            <div class="grid gap-4 rounded-3xl border border-white/10 bg-charcoal/60 p-6">
-              <div class="flex items-center justify-between">
-                <p class="text-sm font-medium text-white/80">Capabilities</p>
-                <span class="text-xs font-mono uppercase tracking-[0.45em] text-white/40">Core</span>
-              </div>
-              <div class="flex flex-wrap gap-2 text-xs text-white/60">
-                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Product Design</span>
-                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Design Systems</span>
-                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Webflow Dev</span>
-                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">Motion & Interactions</span>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p class="text-xs font-mono uppercase tracking-[0.3em] text-white/50">Ubicación</p>
+                <p class="mt-1 text-sm font-medium text-white">Remoto · Latinoamérica</p>
               </div>
             </div>
           </div>
