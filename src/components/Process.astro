@@ -1,0 +1,52 @@
+---
+const steps = [
+  {
+    title: '01 · Discover',
+    description:
+      'We map goals, audiences and opportunities through workshops, interviews and desk research to set a strong foundation.'
+  },
+  {
+    title: '02 · Define',
+    description:
+      'Translating findings into clear flows, UX strategy and design direction. We prioritize impact and align stakeholders.'
+  },
+  {
+    title: '03 · Design',
+    description:
+      'Building polished UI, motion principles and prototyping interactions. Design systems keep everything scalable.'
+  },
+  {
+    title: '04 · Build & Launch',
+    description:
+      'Webflow or Astro development, QA and handover documentation so teams can iterate fast after launch.'
+  }
+];
+---
+<section id="proceso" class="relative py-28">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <div class="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-xl space-y-4">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">Process</span>
+        <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">Collaborating with clarity and momentum</h2>
+      </div>
+      <p class="max-w-xl text-sm text-white/60" data-animate="fade-up">
+        A flexible framework that adapts to your team. I plug in where you need support and keep stakeholders aligned from kickoff to launch.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {steps.map((step, index) => (
+        <article
+          class="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-charcoal via-charcoal/80 to-midnight/80 p-8 transition duration-500 hover:border-accent/60 hover:bg-charcoal/90"
+          data-animate="fade-up"
+          style={`transition-delay: ${index * 80}ms;`}
+        >
+          <div class="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></div>
+          <div class="relative space-y-4">
+            <h3 class="text-xl font-semibold text-white">{step.title}</h3>
+            <p class="text-sm leading-relaxed text-white/60">{step.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
