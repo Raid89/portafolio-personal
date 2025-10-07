@@ -1,0 +1,23 @@
+{
+  "name": "portafolio-personal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "astro check"
+  },
+  "dependencies": {
+    "astro": "^4.5.16",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.4"
+  }
+}

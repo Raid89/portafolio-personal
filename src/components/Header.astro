@@ -1,0 +1,53 @@
+---
+const navigation = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Experiencia', href: '#experiencia' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Acerca de', href: '#sobre-mi' },
+  { label: 'Contacto', href: '#contacto' }
+];
+---
+<header class="sticky top-0 z-30 bg-midnight/80 backdrop-blur-md border-b border-white/10">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+    <a href="#inicio" class="group inline-flex items-center gap-3">
+      <div class="relative h-11 w-11 overflow-hidden rounded-full border border-white/10">
+        <span class="absolute inset-0 bg-gradient-to-br from-accent/60 to-transparent transition-transform duration-500 group-hover:scale-110"></span>
+        <span class="absolute inset-[3px] rounded-full bg-charcoal"></span>
+        <span class="relative z-10 flex h-full w-full items-center justify-center text-sm font-semibold">ND</span>
+      </div>
+      <span class="text-sm font-mono uppercase tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover:text-white">Nicolás Dev</span>
+    </a>
+    <nav class="hidden items-center gap-7 text-sm text-white/70 md:flex">
+      {navigation.map((item) => (
+        <a
+          class="relative font-medium tracking-wide transition duration-300 hover:text-white"
+          href={item.href}
+        >
+          {item.label}
+          <span class="absolute left-0 top-full mt-1 block h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full md:group-hover:w-full"></span>
+        </a>
+      ))}
+    </nav>
+    <a
+      href="#contacto"
+      class="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-white transition hover:border-accent/50 hover:bg-accent/10"
+    >
+      <span>Hablemos</span>
+      <span class="relative inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-white/10">
+        <span class="absolute inset-0 bg-accent/30 transition-transform duration-500 group-hover:scale-110"></span>
+        <svg
+          class="relative z-10 h-4 w-4 -rotate-45"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,68 @@
+---
+const companies = [
+  {
+    period: '2022 — Presente',
+    company: 'Flowbase Studio',
+    role: 'Lead Product Designer',
+    description:
+      'Dirijo el diseño de productos SaaS para startups globales. Lidero procesos de discovery, prototipado y handoff con equipos multidisciplinarios.',
+    tags: ['Design Strategy', 'Design Systems', 'User Testing']
+  },
+  {
+    period: '2020 — 2022',
+    company: 'Northstar',
+    role: 'Senior UX/UI Designer',
+    description:
+      'Rediseño integral de aplicaciones financieras. Mejoré métricas de activación en un 35% mediante nuevas journeys y motion UI.',
+    tags: ['Fintech', 'Motion Design', 'Research']
+  },
+  {
+    period: '2018 — 2020',
+    company: 'Freelance',
+    role: 'Product Designer & Webflow Expert',
+    description:
+      'Creación de landing pages high-converting y dashboards complejos para startups seed-stage en LATAM y Europa.',
+    tags: ['SaaS', 'Startups', 'Branding']
+  }
+];
+---
+<section id="experiencia" class="relative py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 space-y-4">
+      <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Experiencia</span>
+      <h2 class="text-3xl font-semibold text-white md:text-4xl">Trayectoria y resultados comprobables</h2>
+      <p class="max-w-2xl text-sm text-white/60">
+        Cada etapa me permitió fortalecer la intersección entre diseño, producto y negocio. Aquí algunos hitos recientes.
+      </p>
+    </div>
+    <div class="relative border-l border-white/10 pl-10">
+      <div class="absolute left-0 top-0 -translate-x-1/2">
+        <span class="inline-flex h-3 w-3 rounded-full bg-accent shadow-glow"></span>
+      </div>
+      <div class="space-y-12">
+        {companies.map((item) => (
+          <article class="relative space-y-4" data-animate="fade-up">
+            <span class="absolute -left-10 top-1.5 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-white/10 bg-charcoal text-[10px] font-semibold uppercase text-white/60">
+              ●
+            </span>
+            <p class="text-xs font-mono uppercase tracking-[0.35em] text-white/40">{item.period}</p>
+            <div class="flex flex-col gap-4 rounded-3xl border border-white/10 bg-charcoal/60 p-8">
+              <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <h3 class="text-xl font-semibold text-white">{item.company}</h3>
+                <span class="text-sm text-white/50">{item.role}</span>
+              </div>
+              <p class="text-sm text-white/60">{item.description}</p>
+              <ul class="flex flex-wrap gap-3 text-xs font-medium text-white/60">
+                {item.tags.map((tag) => (
+                  <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1" key={tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
