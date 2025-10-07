@@ -1,0 +1,57 @@
+---
+const services = [
+  {
+    title: 'Product Design',
+    description: 'Diseño productos digitales end-to-end, desde research, definición UX, hasta interfaces finales listas para desarrollo.',
+    highlights: ['Design Systems', 'UX Research', 'Prototipado interactivo']
+  },
+  {
+    title: 'No-Code Development',
+    description: 'Implementación de experiencias web complejas en Webflow y Astro, optimizadas para performance y SEO.',
+    highlights: ['Webflow Enterprise', 'Integraciones CMS', 'Automatizaciones']
+  },
+  {
+    title: 'Consultoría UX',
+    description: 'Acompaño equipos para alinear producto y negocio mediante workshops, roadmaps y auditorías de usabilidad.',
+    highlights: ['Workshops', 'Auditorías UX', 'Design Ops']
+  }
+];
+---
+<section id="servicios" class="relative py-28">
+  <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-[0.3em] text-white/40">Servicios</span>
+        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Experiencias digitales diseñadas a medida</h2>
+      </div>
+      <p class="max-w-xl text-sm text-white/60" data-animate="fade-up">
+        Cada proyecto es un mix entre estrategia, diseño y tecnología. Trabajo junto a startups y equipos de producto para lanzar experiencias memorables.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {services.map((service) => (
+        <article
+          data-animate="scale-in"
+          class="group h-full rounded-3xl border border-white/10 bg-charcoal/60 p-8 transition hover:border-accent/50 hover:bg-charcoal/80"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-semibold text-white">{service.title}</h3>
+            <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm text-white/60 transition group-hover:border-accent/60 group-hover:bg-accent/20 group-hover:text-white">
+              {String(service.title).slice(0, 2)}
+            </span>
+          </div>
+          <p class="mt-6 text-sm leading-relaxed text-white/60">{service.description}</p>
+          <ul class="mt-6 space-y-3 text-sm text-white/70">
+            {service.highlights.map((item) => (
+              <li class="flex items-center gap-3" key={item}>
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
