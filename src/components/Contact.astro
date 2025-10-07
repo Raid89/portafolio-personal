@@ -1,0 +1,102 @@
+<section id="contacto" class="relative py-28">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom,_rgba(91,120,246,0.25)_0%,_transparent_65%)]"></div>
+  <div class="mx-auto max-w-5xl px-6 lg:px-8">
+    <div class="overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-charcoal via-charcoal/80 to-midnight/80 p-12">
+      <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-xl space-y-6">
+          <span class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-[0.45em] text-white/60">
+            Let’s build something
+          </span>
+          <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">Ready to launch your next product experience?</h2>
+          <p class="text-sm text-white/60">
+            Share a bit about your goals, timeline and challenges. I’ll reply within 24 hours with availability and a tailored next step.
+          </p>
+          <div class="flex flex-wrap gap-4 text-sm text-white/60">
+            <a class="group inline-flex items-center gap-3" href="mailto:hola@nicolas.dev">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              hola@nicolas.dev
+              <svg
+                class="h-4 w-4 -rotate-45 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+            <a class="group inline-flex items-center gap-3" href="https://cal.com">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              Book a discovery call
+              <svg
+                class="h-4 w-4 -rotate-45 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <form class="grid w-full max-w-md gap-5" data-animate="fade-up">
+          <div class="space-y-2">
+            <label class="text-xs font-mono uppercase tracking-[0.35em] text-white/40" for="nombre">Name</label>
+            <input
+              id="nombre"
+              type="text"
+              placeholder="How should I call you?"
+              class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-accent/70 focus:outline-none focus:ring-2 focus:ring-accent/30"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-mono uppercase tracking-[0.35em] text-white/40" for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="hey@company.com"
+              class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-accent/70 focus:outline-none focus:ring-2 focus:ring-accent/30"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-mono uppercase tracking-[0.35em] text-white/40" for="mensaje">Project details</label>
+            <textarea
+              id="mensaje"
+              rows="4"
+              placeholder="Tell me about your product, goals and launch timeline."
+              class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-accent/70 focus:outline-none focus:ring-2 focus:ring-accent/30"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="group inline-flex items-center justify-center gap-3 rounded-full border border-transparent bg-white px-6 py-3 text-sm font-semibold text-midnight transition hover:-translate-y-1 hover:bg-secondary"
+          >
+            Send message
+            <svg
+              class="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </button>
+          <p class="text-xs text-white/40">
+            By submitting you agree to receive updates about availability and services.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

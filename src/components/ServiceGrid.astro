@@ -1,0 +1,70 @@
+---
+const services = [
+  {
+    title: 'Product Strategy',
+    description:
+      'Aligning product vision, user goals and business metrics through collaborative workshops, roadmaps and experience audits.',
+    highlights: ['Discovery sessions', 'Journey mapping', 'Vision decks'],
+    icon: '🧭'
+  },
+  {
+    title: 'Product Design',
+    description:
+      'Designing multi-platform interfaces with scalable systems, detailed UX flows and high fidelity prototypes ready for dev handoff.',
+    highlights: ['Design systems', 'Interactive prototypes', 'Usability testing'],
+    icon: '🎨'
+  },
+  {
+    title: 'Webflow Development',
+    description:
+      'Building performant marketing sites, product launches and documentation hubs leveraging Webflow CMS and advanced animations.',
+    highlights: ['Component libraries', 'SEO ready builds', 'CMS automation'],
+    icon: '⚙️'
+  },
+  {
+    title: 'Motion & Interactions',
+    description:
+      'Enhancing product experiences with meaningful micro-interactions powered by GSAP, Lottie and After Effects to keep users engaged.',
+    highlights: ['Micro-interactions', 'Scroll storytelling', 'Prototyping in AE'],
+    icon: '✨'
+  }
+];
+---
+<section id="servicios" class="relative py-28">
+  <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <div class="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-xl space-y-4">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">Capabilities</span>
+        <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">What I do for ambitious teams</h2>
+      </div>
+      <p class="max-w-xl text-sm text-white/60" data-animate="fade-up">
+        From product strategy to production-ready builds, I partner with founders and product leaders to launch digital products that move fast and look impeccable.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {services.map((service) => (
+        <article
+          data-animate="scale-in"
+          class="group flex h-full flex-col gap-6 rounded-3xl border border-white/10 bg-charcoal/70 p-8 transition duration-500 hover:-translate-y-2 hover:border-accent/60 hover:bg-charcoal/90"
+        >
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-xl">
+            {service.icon}
+          </span>
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold text-white">{service.title}</h3>
+            <p class="text-sm leading-relaxed text-white/60">{service.description}</p>
+          </div>
+          <ul class="mt-auto space-y-3 text-sm text-white/70">
+            {service.highlights.map((item) => (
+              <li class="flex items-center gap-3" key={item}>
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

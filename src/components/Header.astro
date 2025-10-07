@@ -1,0 +1,55 @@
+---
+const navigation = [
+  { label: 'Work', href: '#proyectos' },
+  { label: 'Capabilities', href: '#servicios' },
+  { label: 'Process', href: '#proceso' },
+  { label: 'About', href: '#sobre-mi' },
+  { label: 'Contact', href: '#contacto' }
+];
+---
+<header class="sticky top-0 z-40 border-b border-white/10 bg-midnight/70 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-8">
+    <a href="#inicio" class="group inline-flex items-center gap-4">
+      <div class="relative h-11 w-11 overflow-hidden rounded-2xl border border-white/10 bg-charcoal">
+        <span class="absolute inset-0 bg-gradient-to-br from-accent/50 via-transparent to-purple-500/40 opacity-60 transition-all duration-500 group-hover:opacity-100"></span>
+        <span class="relative z-10 flex h-full w-full items-center justify-center text-sm font-semibold text-white">ND</span>
+      </div>
+      <div class="space-y-0.5">
+        <span class="block text-xs font-mono uppercase tracking-[0.35em] text-white/40">Portfolio</span>
+        <span class="block text-sm font-medium text-white">Nicolás Dev</span>
+      </div>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm md:flex">
+      {navigation.map((item) => (
+        <a
+          class="group relative font-medium uppercase tracking-[0.25em] text-white/50 transition duration-300 hover:text-white"
+          href={item.href}
+        >
+          {item.label}
+          <span class="absolute left-0 top-full mt-2 block h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      ))}
+    </nav>
+    <a
+      href="#contacto"
+      class="group inline-flex items-center gap-3 rounded-full border border-accent/40 bg-accent/20 px-5 py-2 text-sm font-medium text-white transition hover:border-white/60 hover:bg-white hover:text-midnight"
+    >
+      <span>Start a project</span>
+      <span class="relative inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-white/10">
+        <span class="absolute inset-0 bg-white/20 transition-transform duration-500 group-hover:scale-110"></span>
+        <svg
+          class="relative z-10 h-4 w-4 -rotate-45"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,45 @@
+---
+const testimonials = [
+  {
+    quote:
+      'Nicolás elevated our product vision. Every interaction felt purposeful and the Webflow build was spotless. He made our launch feel premium.',
+    author: 'María Gómez',
+    role: 'COO · Arcana Finance'
+  },
+  {
+    quote:
+      'He plugged into our team as if he had always been there. Systems, motion, storytelling — everything aligned perfectly with our roadmap.',
+    author: 'Jordan Smith',
+    role: 'Head of Product · Forma AI'
+  },
+  {
+    quote:
+      'From discovery to handoff, the process was smooth and inspiring. Our marketing site now communicates the energy of our studio.',
+    author: 'Luis Martínez',
+    role: 'Founder · Marea Studio'
+  }
+];
+---
+<section class="relative py-28">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <div class="mb-12 max-w-xl space-y-4">
+      <span class="text-xs font-mono uppercase tracking-[0.4em] text-white/40">Testimonials</span>
+      <h2 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">Teams appreciate the craft and collaboration</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {testimonials.map((item, index) => (
+        <article
+          class="flex h-full flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-charcoal/70 p-8 transition duration-500 hover:border-accent/60 hover:bg-charcoal/90"
+          data-animate="fade-up"
+          style={`transition-delay: ${index * 100}ms;`}
+        >
+          <p class="text-sm leading-relaxed text-white/70">“{item.quote}”</p>
+          <div class="space-y-1 text-sm text-white/60">
+            <p class="font-medium text-white">{item.author}</p>
+            <p>{item.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

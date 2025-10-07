@@ -1,0 +1,22 @@
+---
+const logos = [
+  'https://assets.website-files.com/63e0e3c0a343b47f3312f514/63e0e3c0a343b4c9de12f519_logo-figma.svg',
+  'https://assets.website-files.com/63e0e3c0a343b47f3312f514/63e0e3c0a343b40f7a12f51b_logo-webflow.svg',
+  'https://assets.website-files.com/63e0e3c0a343b47f3312f514/63e0e3c0a343b460ad12f51c_logo-adobe.svg',
+  'https://assets.website-files.com/63e0e3c0a343b47f3312f514/63e0e3c0a343b4ab7712f51a_logo-notion.svg',
+  'https://assets.website-files.com/63e0e3c0a343b47f3312f514/63e0e3c0a343b4b65d12f518_logo-framer.svg'
+];
+---
+<section class="relative py-10">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-10 px-6 lg:px-8">
+    {logos.map((logo, index) => (
+      <div
+        class="flex h-14 w-32 items-center justify-center rounded-2xl border border-white/5 bg-white/5 px-6 opacity-60 transition hover:opacity-100"
+        data-animate="fade-up"
+        style={`transition-delay: ${index * 80}ms;`}
+      >
+        <img src={logo} alt="Partner logo" class="h-8 w-auto object-contain" loading="lazy" />
+      </div>
+    ))}
+  </div>
+</section>
