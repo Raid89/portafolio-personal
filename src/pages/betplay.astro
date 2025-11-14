@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "@components/navbar/Navbar.astro";
+import BetplayHero from "@components/betplay/Hero.astro";
+import TechStack from "@components/betplay/TechStack.astro";
+import ProjectScope from "@components/betplay/ProjectScope.astro";
+import Gallery from "@components/betplay/Gallery.astro";
+import CallToAction from "@components/betplay/CallToAction.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout>
+    <Navbar />
+    
+    <!-- Hero Section -->
+    <section class="hero-section relative overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900 text-white pt-[120px] ">
+        <div class="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(0deg,white,transparent)]"></div>
+        <BetplayHero />
+    </section>
+    
+    <!-- Main Content with Scroll Animations -->
+    <main class="space-y-24 md:space-y-32 py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Tech Stack Section -->
+        <section id="tech-stack-section" class="opacity-0">
+            <TechStack />
+        </section>
+        
+        <!-- Project Scope Section -->
+        <section id="project-scope-section" class="opacity-0">
+            <ProjectScope />
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="opacity-0">
+            <Gallery/>
+        </section>
+        
+        <!-- CTA Section -->
+        <section id="cta-section" class="opacity-0">
+            <CallToAction />
+        </section>
+    </main>
+    
+    <Footer />
+    
+    <!-- GSAP Script -->
+    <script>
+        import gsap from 'gsap';
+        import ScrollTrigger from 'gsap/ScrollTrigger';
+        
+        // Registrar el plugin de ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animación para las secciones
+            const sections = [
+                '#tech-stack-section',
+                '#project-scope-section',
+                '#gallery-section',
+                '#cta-section'
+            ];
+            
+            sections.forEach(section => {
+                gsap.fromTo(
+                    section,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+            
+            // Efecto parallax para el hero
+            const hero = document.querySelector('.hero-section');
+            if (hero) {
+                gsap.to(hero, {
+                    y: 50,
+                    scrollTrigger: {
+                        trigger: hero,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                });
+            }
+        });
+    </script>
+</Layout>
+
+<!-- Global Styles -->
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #0f172a;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #2563eb;
+    }
+</style>

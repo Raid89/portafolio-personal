@@ -1,0 +1,200 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+---
+
+<footer
+    class="bg-gradient-to-b from-gray-900 to-cyan text-white pt-16 pb-8 px-4 md:px-8"
+>
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <!-- Logo y descripción -->
+            <div class="col-span-1">
+                <div class="flex items-center mb-4">
+                    <span
+                        class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                    >
+                        Nicolas C.
+                    </span>
+                </div>
+                <p class="text-gray-300 text-sm mb-4">
+                    Desarrollador Full Stack apasionado por crear experiencias
+                    digitales excepcionales y soluciones innovadoras.
+                </p>
+                <div class="flex space-x-4">
+                    <a
+                        href="https://github.com/tu-usuario"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    >
+                        <!-- <Icon name="mdi:github" class="w-6 h-6" /> -->
+                    </a>
+                    <a
+                        href="https://linkedin.com/in/tu-perfil"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    >
+                        <!-- <Icon name="mdi:linkedin" class="w-6 h-6" /> -->
+                    </a>
+                    <a
+                        href="https://twitter.com/tu-usuario"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    >
+                        <!-- <Icon name="mdi:twitter" class="w-6 h-6" /> -->
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enlaces rápidos -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-cyan-400">
+                    Enlaces Rápidos
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a
+                            href="/#inicio"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Inicio</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/#sobre-mi"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Sobre Mí</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/#proyectos"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Proyectos</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/#servicios"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Servicios</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/contacto"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Contacto</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Servicios -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-cyan-400">
+                    Servicios
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a
+                            href="/servicios/desarrollo-web"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Desarrollo Web</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios/desarrollo-movil"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Desarrollo Móvil</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios/ux-ui"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Diseño UX/UI</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios/consultoria"
+                            class="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                            >Consultoría</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-cyan-400">
+                    Contacto
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <!-- <Icon name="mdi:email" class="w-5 h-5 text-cyan-400 mt-0.5 mr-2 flex-shrink-0" /> -->
+                        <span class="text-gray-300"
+                            >nicolas.cr0603@gmail.com</span
+                        >
+                    </li>
+                    <li class="flex items-start">
+                        <!-- <Icon name="mdi:map-marker" class="w-5 h-5 text-cyan-400 mt-0.5 mr-2 flex-shrink-0" /> -->
+                        <span class="text-gray-300">Bogotá, Colombia</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Derechos de autor -->
+        <div class="pt-8 border-t border-gray-700">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; {new Date().getFullYear()} Nicolas Castellanos. Todos
+                    los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a
+                        href="/politica-privacidad"
+                        class="text-gray-399 hover:text-cyan-400 text-sm transition-colors duration-300"
+                    >
+                        Política de Privacidad
+                    </a>
+                    <a
+                        href="/terminos"
+                        class="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-300"
+                    >
+                        Términos de Servicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Efecto de iluminación en los bordes */
+    footer {
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(34, 211, 238, 0.2),
+            transparent
+        );
+    }
+</style>

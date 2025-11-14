@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+const { title, description, image } = Astro.props;
+---
+
+<div
+  class="feature-image flex flex-col items-center justify-center gap-7 text-center max-w-[400px]"
+>
+  <div class="w-[300px] h-[300px] shadow-lg rounded-lg overflow-hidden">
+    <Image src={image} alt={title} width={500} height={500} />
+  </div>
+  <h3 class="text-3xl/[1.1] font-bold">{title}</h3>
+  <p class="text-base/[1.1]">{description}</p>
+</div>
+
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.feature-image').forEach((card, index) => {
+    gsap.from(card, {
+      opacity: 0,
+      x: 250,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 120%",
+        scrub: true,
+      },
+    });
+  });
+</script>

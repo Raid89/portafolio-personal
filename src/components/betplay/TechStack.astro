@@ -1,0 +1,203 @@
+---
+import { Icon } from "astro-icon/components";
+
+const techs = [
+    { name: "angular", category: "Frontend" },
+    { name: "nestjs", category: "Backend" },
+    { name: "mongo", category: "Base de Datos" },
+    { name: "sass", category: "Estilos" },
+    { name: "postgres", category: "Base de Datos" },
+    { name: "typescript", category: "Lenguaje" },
+    // { name: "docker", category: "DevOps" },
+    // { name: "git", category: "Control de Versiones" },
+    // { name: "nodejs", category: "Backend" },
+    { name: "react", category: "Frontend" },
+    { name: "graphql", category: "API" },
+    // { name: "aws", category: "Cloud" }
+];
+
+// Agrupar tecnologías por categoría
+const techByCategory = techs.reduce((acc, tech) => {
+    if (!acc[tech.category]) {
+        acc[tech.category] = [];
+    }
+    acc[tech.category].push(tech);
+    return acc;
+}, {});
+---
+
+<section id="tech-stack" class="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-br from-white to-gray-50">
+    <!-- Elementos decorativos -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+        <div class="absolute inset-0 bg-grid-gray-300 [mask-image:linear-gradient(0deg,white,transparent)]"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16 px-4 sm:px-0">
+            <span class="inline-block text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-3">
+                Stack Tecnológico
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Tecnologías que impulsaron el proyecto
+            </h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto"></div>
+        </div>
+
+        <!-- Navegación por categorías -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8 sm:mb-12 px-2 sm:px-0 overflow-x-auto pb-2 sm:pb-0" id="tech-categories">
+            <div class="flex-shrink-0">
+                <button class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 bg-cyan-500 text-white whitespace-nowrap" data-category="all">
+                    Todas
+                </button>
+            </div>
+            {Object.keys(techByCategory).map(category => (
+                <div class="flex-shrink-0">
+                    <button class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-gray-100 whitespace-nowrap" data-category={category.toLowerCase().replace(/\s+/g, '-')}>
+                        {category}
+                    </button>
+                </div>
+            ))}
+        </div>
+
+        <!-- Grid de tecnologías -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6 px-2 sm:px-0" id="tech-grid">
+            {techs.map((tech, index) => {
+                const categoryClass = tech.category.toLowerCase().replace(/\s+/g, '-');
+                return (
+                    <div 
+                        class={`tech-item group relative p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 ${categoryClass}`}
+                        data-category={categoryClass}
+                        data-aos="fade-up"
+                        data-aos-delay={index * 50}
+                    >
+                        <div class="flex flex-col items-center h-full">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center mb-2 sm:mb-3 rounded-full bg-gradient-to-br from-cyan-50 to-blue-50 group-hover:from-cyan-100 group-hover:to-blue-100 transition-colors duration-300">
+                                <Icon name={tech.name} class="text-2xl sm:text-3xl text-cyan-600" />
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-gray-700 capitalize text-center">{tech.name}</span>
+                            <span class="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 text-center">{tech.category}</span>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    </div>
+
+    <style>
+        /* Estilos para la transición de los elementos */
+        .tech-item {
+            opacity: 1;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1rem 0.5rem;
+            border-radius: 0.75rem;
+        }
+        
+        .tech-item.hidden {
+            opacity: 0.3;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+        
+        .category-btn {
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .category-btn.active {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: white;
+            box-shadow: 0 2px 4px -1px rgba(6, 182, 212, 0.3);
+            border-color: transparent;
+        }
+        
+        /* Mejoras de accesibilidad */
+        .category-btn:focus {
+            outline: 2px solid #06b6d4;
+            outline-offset: 2px;
+        }
+        
+        /* Ajustes para pantallas pequeñas */
+        @media (max-width: 639px) {
+            #tech-categories {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE and Edge */
+            }
+            
+            #tech-categories::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+            
+            .tech-item {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        import gsap from 'gsap';
+        
+        // Animación de entrada de los elementos
+        document.addEventListener('DOMContentLoaded', () => {
+            const techItems = document.querySelectorAll('.tech-item');
+            
+            techItems.forEach((item, index) => {
+                gsap.fromTo(
+                    item,
+                    { y: 30, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        delay: index * 0.05,
+                        ease: 'back.out(1.4)',
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+            
+            // Filtrado por categoría
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const techGrid = document.getElementById('tech-grid');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    
+                    // Actualizar botones activos
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filtrar elementos
+                    const items = techGrid.querySelectorAll('.tech-item');
+                    items.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.classList.remove('hidden');
+                            gsap.to(item, { 
+                                opacity: 1, 
+                                scale: 1, 
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        } else {
+                            item.classList.add('hidden');
+                            gsap.to(item, { 
+                                opacity: 0.3, 
+                                scale: 0.95, 
+                                duration: 0.3,
+                                ease: 'power2.in'
+                            });
+                        }
+                    });
+                });
+            });
+            
+            // Activar la categoría "Todas" por defecto
+            document.querySelector('[data-category="all"]').click();
+        });
+    </script>
+</section>

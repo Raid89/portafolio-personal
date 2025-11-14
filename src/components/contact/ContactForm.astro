@@ -1,0 +1,682 @@
+---
+import Button from "@components/shared/Button.astro";
+import CatPhoto from "@assets/gato-astuto-posando.webp";
+import { Image } from "astro:assets";
+---
+
+<section
+    id="contact-section"
+    class="max-w-6xl mx-auto px-4 py-12 relative z-10"
+    aria-label="Contacto"
+>
+    <!-- Fondo decorativo de líneas diagonales (cyan-500) -->
+    <div class="bg-lines" aria-hidden="true"></div>
+
+    <!-- Fondo decorativo existente (bolas/gradientes) -->
+    <div class="bg-decor" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+    </div>
+
+    <!-- Título y descripción de la sección -->
+    <div class="text-center mb-12">
+        <h2
+            class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent mb-4"
+        >
+            ¡Hablemos!
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            ¿Tienes un proyecto en mente? Estoy listo para ayudarte a hacerlo
+            realidad. Envíame un mensaje y te responderé lo antes posible.
+        </p>
+    </div>
+
+    <div class="relative z-10 grid md:grid-cols-2 gap-8 content">
+        <!-- Lado izquierdo: foto en círculo + texto debajo -->
+        <div
+            class="intro flex flex-col items-center justify-center p-8 bg-white/80 rounded-xl backdrop-blur-md shadow-lg text-center transform transition-all hover:scale-[1.02] hover:shadow-xl"
+        >
+            <div class="relative group">
+                <div
+                    class="image-background absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-200 animate-pulse"
+                >
+                </div>
+                <Image
+                    src={CatPhoto}
+                    alt="Foto de Nicolas"
+                    width={200}
+                    height={200}
+                    class="relative rounded-full w-48 h-48 object-cover border-4 border-white shadow-md"
+                />
+            </div>
+            <p
+                class="mt-6 text-xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent"
+            >
+                Nicolas Castellanos
+            </p>
+            <p class="text-gray-600 mt-2">Desarrollador Full Stack</p>
+            <div class="mt-4 text-sm text-gray-500">
+                <p class="flex items-center justify-center gap-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-cyan-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        ></path>
+                    </svg>
+                    nicolas.cr0603@gmail.com
+                </p>
+            </div>
+        </div>
+
+        <!-- Lado derecho: formulario -->
+        <div
+            class="form-wrap bg-white/95 rounded-xl p-8 shadow-xl backdrop-blur-sm border border-gray-100 transform transition-all hover:shadow-2xl"
+        >
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+                Envíame un mensaje
+            </h3>
+            <form
+                id="contact-form"
+                autocomplete="on"
+                class="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+                <div class="flex flex-col gap-2">
+                    <label for="name" class="text-sm font-medium"
+                        >Nombre completo <span class="text-red-500">*</span
+                        ></label
+                    >
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="Tu nombre completo"
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                        aria-required="true"
+                    />
+                    <p class="text-xs text-gray-500 mt-1" id="nameHelp">
+                        Por favor, ingresa tu nombre completo
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-sm font-medium"
+                        >Correo electrónico <span class="text-red-500">*</span
+                        ></label
+                    >
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="tu@ejemplo.com"
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                        aria-required="true"
+                        aria-describedby="emailHelp"
+                    />
+                    <p class="text-xs text-gray-500 mt-1" id="emailHelp">
+                        Nunca compartiremos tu correo electrónico
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="phone" class="text-sm font-medium"
+                        >Teléfono</label
+                    >
+                    <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="+57 123 456 7890"
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                        pattern="[0-9+\-\s()]*"
+                        aria-describedby="phoneHelp"
+                    />
+                    <p class="text-xs text-gray-500 mt-1" id="phoneHelp">
+                        Opcional, incluye código de país
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="inquiry" class="text-sm font-medium"
+                        >Tipo de consulta <span class="text-red-500">*</span
+                        ></label
+                    >
+                    <select
+                        id="inquiry"
+                        name="inquiry"
+                        required
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition bg-white"
+                        aria-required="true"
+                    >
+                        <option value="" disabled selected
+                            >Selecciona una opción</option
+                        >
+                        <option value="trabajo">Oportunidad laboral</option>
+                        <option value="proyecto">Proyecto freelance</option>
+                        <option value="consulta">Consulta general</option>
+                        <option value="colaboracion">Colaboración</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label for="subject" class="text-sm font-medium"
+                        >Asunto <span class="text-red-500">*</span></label
+                    >
+                    <input
+                        id="subject"
+                        name="subject"
+                        type="text"
+                        required
+                        placeholder="¿Sobre qué quieres hablar?"
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                        aria-required="true"
+                    />
+                </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label for="message" class="text-sm font-medium"
+                        >Mensaje <span class="text-red-500">*</span></label
+                    >
+                    <textarea
+                        id="message"
+                        name="message"
+                        required
+                        placeholder="Cuéntame en detalle sobre tu proyecto o consulta..."
+                        rows="6"
+                        class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition resize-vertical min-h-[150px]"
+                        aria-required="true"></textarea>
+                    <p class="text-xs text-gray-500 mt-1">
+                        Mínimo 30 caracteres
+                    </p>
+                </div>
+
+                <div class="flex items-start gap-3 md:col-span-2">
+                    <div class="flex items-center h-5">
+                        <input
+                            id="privacy"
+                            name="privacy"
+                            type="checkbox"
+                            required
+                            class="w-4 h-4 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+                            aria-required="true"
+                        />
+                    </div>
+                    <label for="privacy" class="text-sm text-gray-700">
+                        He leído y acepto la <a
+                            href="/politica-privacidad"
+                            class="text-cyan-600 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer">política de privacidad</a
+                        > y el <a
+                            href="/aviso-legal"
+                            class="text-cyan-600 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer">aviso legal</a
+                        >
+                        <span class="text-red-500">*</span>
+                    </label>
+                </div>
+
+                <div
+                    class="md:col-span-2 flex flex-col sm:flex-row justify-between items-center gap-4 mt-2"
+                >
+                    <p class="text-xs text-gray-500">
+                        Los campos marcados con <span class="text-red-500"
+                            >*</span
+                        > son obligatorios
+                    </p>
+                    <button
+                        type="submit"
+                        class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                        id="submit-btn"
+                    >
+                        <span class="flex items-center justify-center gap-2">
+                            <span class="submit-text">Enviar mensaje</span>
+                            <span class="submit-spinner hidden animate-spin">
+                                <svg
+                                    class="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+
+                <div
+                    id="form-status"
+                    class="md:col-span-2 text-sm mt-2"
+                    aria-live="polite"
+                >
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Fondo decorativo de líneas diagonales (color Cyan-500) */
+    .bg-lines {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(6, 182, 212, 0.25) 0px,
+            rgba(6, 182, 212, 0.25) 2px,
+            transparent 2px,
+            transparent 40px
+        );
+        animation: linesMove 60s linear infinite;
+        opacity: 0.95;
+    }
+
+    @keyframes linesMove {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 40px 40px;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    .bg-decor {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+    .bg-decor .blob {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background:
+            radial-gradient(
+                circle at 30% 30%,
+                rgba(99, 102, 241, 0.55),
+                transparent 40%
+            ),
+            radial-gradient(
+                circle at 70% 70%,
+                rgba(236, 72, 153, 0.55),
+                transparent 40%
+            );
+        filter: blur(40px);
+        animation: float 20s ease-in-out infinite;
+    }
+    .bg-decor .blob.b1 {
+        left: -120px;
+        top: -120px;
+    }
+    .bg-decor .blob.b2 {
+        right: -180px;
+        bottom: -180px;
+        width: 520px;
+        height: 520px;
+        animation-duration: 30s;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px) translateX(0px);
+        }
+        50% {
+            transform: translateY(-40px) translateX(20px);
+        }
+        100% {
+            transform: translateY(0px) translateX(0px);
+        }
+    }
+
+    /* Asegura que el contenido esté por encima del fondo */
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro {
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 12px;
+        padding: 0.75rem;
+    }
+
+    .form-wrap {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow:
+            0 10px 25px -5px rgba(0, 0, 0, 0.1),
+            0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Estilos para los inputs y textareas */
+    .form-wrap input[type="text"],
+    .form-wrap input[type="email"],
+    .form-wrap input[type="tel"],
+    .form-wrap select,
+    .form-wrap textarea {
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+    }
+
+    .form-wrap input[type="text"]:focus,
+    .form-wrap input[type="email"]:focus,
+    .form-wrap input[type="tel"]:focus,
+    .form-wrap select:focus,
+    .form-wrap textarea:focus {
+        border-color: #06b6d4;
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        outline: none;
+    }
+
+    /* Estilo personalizado para el select */
+    .form-wrap select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.75rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+    }
+
+    /* Estilo para el checkbox personalizado */
+    .form-wrap input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid #d1d5db;
+        border-radius: 0.25rem;
+        background-color: white;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s;
+    }
+
+    .form-wrap input[type="checkbox"]:checked {
+        background-color: #06b6d4;
+        border-color: #06b6d4;
+    }
+
+    .form-wrap input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    /* Estilo para el botón de envío */
+    .form-wrap button[type="submit"] {
+        background-image: linear-gradient(to right, #06b6d4, #3b82f6);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-wrap button[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-wrap button[type="submit"]:active {
+        transform: translateY(0);
+    }
+
+    .form-wrap button[type="submit"]::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: 0.5s;
+    }
+
+    .form-wrap button[type="submit"]:hover::before {
+        left: 100%;
+    }
+
+    @media (max-width: 768px) {
+        /* Apilar en móviles: foto+texto arriba, formulario abajo ya que es una grid de 2 columnas en md+ */
+        .intro {
+            order: 1;
+            text-align: center;
+        }
+        .form-wrap {
+            order: 2;
+        }
+    }
+
+    .image-background {
+        animation: rotateBg 2s linear infinite;
+        -webkit-animation: rotateBg 2s linear infinite; /* Safari/older browsers */
+        transform-origin: center center;
+    }
+    @keyframes rotateBg {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes rotateBg {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contact-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const submitText = submitBtn?.querySelector(".submit-text");
+        const submitSpinner = submitBtn?.querySelector(".submit-spinner");
+        const formStatus = document.getElementById("form-status");
+        const messageField = document.getElementById("message");
+
+        // Validación personalizada para el campo de mensaje
+        messageField?.addEventListener("input", () => {
+            if (
+                messageField.value.length < 30 &&
+                messageField.value.length > 0
+            ) {
+                messageField.setCustomValidity(
+                    "El mensaje debe tener al menos 30 caracteres",
+                );
+            } else {
+                messageField.setCustomValidity("");
+            }
+        });
+
+        form?.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (!form.checkValidity()) {
+                // Si el formulario no es válido, mostrar mensajes de validación
+                form.reportValidity();
+                return;
+            }
+
+            // Deshabilitar el botón y mostrar spinner
+            submitBtn.disabled = true;
+            submitText.textContent = "Enviando...";
+            submitSpinner?.classList.remove("hidden");
+
+            try {
+                // Aquí iría la lógica para enviar el formulario
+                // Por ejemplo, usando fetch para enviar los datos a un endpoint
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // Simulamos un envío con un timeout
+                await new Promise((resolve) => setTimeout(resolve, 1500));
+
+                // Mostrar mensaje de éxito
+                formStatus.innerHTML = `
+          <div class="p-4 mb-4 text-green-800 bg-green-100 rounded-lg" role="alert">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="font-medium">¡Mensaje enviado con éxito!</span>
+            </div>
+            <p class="mt-2 text-sm">Gracias por contactarme. Me pondré en contacto contigo lo antes posible.</p>
+          </div>
+        `;
+
+                // Resetear el formulario
+                form.reset();
+            } catch (error) {
+                console.error("Error al enviar el formulario:", error);
+
+                // Mostrar mensaje de error
+                formStatus.innerHTML = `
+          <div class="p-4 mb-4 text-red-800 bg-red-100 rounded-lg" role="alert">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="font-medium">Error al enviar el mensaje</span>
+            </div>
+            <p class="mt-2 text-sm">Lo sentimos, ha ocurrido un error al intentar enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.</p>
+          </div>
+        `;
+            } finally {
+                // Restaurar el botón
+                submitBtn.disabled = false;
+                submitText.textContent = "Enviar mensaje";
+                submitSpinner?.classList.add("hidden");
+
+                // Desplazarse al mensaje de estado
+                formStatus.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+            }
+        });
+
+        // Mejorar la accesibilidad de los campos de formulario
+        const formInputs = form?.querySelectorAll("input, textarea, select");
+        formInputs?.forEach((input) => {
+            // Agregar clases de enfoque
+            input.addEventListener("focus", () => {
+                input.parentElement?.classList.add(
+                    "ring-2",
+                    "ring-cyan-500",
+                    "ring-opacity-50",
+                );
+            });
+
+            input.addEventListener("blur", () => {
+                input.parentElement?.classList.remove(
+                    "ring-2",
+                    "ring-cyan-500",
+                    "ring-opacity-50",
+                );
+
+                // Validación en tiempo real
+                if (!input.checkValidity()) {
+                    input.classList.add("border-red-500");
+                    input.classList.remove("border-gray-200");
+                } else {
+                    input.classList.remove("border-red-500");
+                    input.classList.add("border-gray-200");
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const payload = {
+                name: String(data.get("name") ?? "").trim(),
+                email: String(data.get("email") ?? "").trim(),
+                subject: String(data.get("subject") ?? "").trim(),
+                message: String(data.get("message") ?? "").trim(),
+            };
+
+            if (
+                !payload.name ||
+                !payload.email ||
+                !payload.subject ||
+                !payload.message
+            ) {
+                if (status) {
+                    status.textContent = "Por favor completa todos los campos.";
+                    status.style.color = "#e11d48";
+                }
+                return;
+            }
+
+            if (status) {
+                status.textContent = "Enviando...";
+                status.style.color = "#374151";
+            }
+
+            try {
+                await new Promise((r) => setTimeout(r, 700));
+                if (status) {
+                    status.textContent = "Mensaje enviado. ¡Gracias!";
+                    status.style.color = "#10b981";
+                }
+                form.reset();
+            } catch {
+                if (status) {
+                    status.textContent = "Error al enviar. Intenta nuevamente.";
+                    status.style.color = "#e11d48";
+                }
+            }
+        });
+    }
+</script>

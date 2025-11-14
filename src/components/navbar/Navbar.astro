@@ -1,0 +1,318 @@
+---
+import Logo from "@assets/logo.svg";
+import Image from "astro/components/Image.astro";
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/soon", label: "Conoceme" },
+  { href: "#contact-section", label: "Contactame" },
+];
+---
+
+<header class="py-2 px-5 fixed w-full z-[100000]">
+  <div
+    id="header"
+    class="m-auto max-w-7xl flex justify-between items-center overflow-hidden px-5"
+  >
+    <a href="/">
+      <Image id="logo" src={Logo} alt="Logo" width={75} height={75} />
+    </a>
+    
+    <!-- Botón del menú hamburguesa -->
+    <button id="menu-toggle" class="md:hidden z-50 p-3 -mr-2 flex items-center justify-center" aria-label="Menú">
+      <div class="w-6 h-5 relative">
+        <!-- <span class="block absolute h-[2px] w-6 bg-[#365faf] transition-all duration-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" id="bar1"></span>
+        <span class="block absolute h-[2px] w-6 bg-[#365faf] transition-all duration-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" id="bar2"></span>
+        <span class="block absolute h-[2px] w-6 bg-[#365faf] transition-all duration-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" id="bar3"></span> -->
+      </div>
+    </button>
+
+    <!-- Menú de navegación -->
+    <nav class="hidden md:block">
+      <ul class="flex gap-8">
+        {
+          links.map((link) => (
+            <li class="navigation-item">
+              <a 
+                href={link.href} 
+                class="hover:text-[#365faf] transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  
+  <!-- Menú móvil - Fuera del contenedor principal -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[#eef0f4] bg-opacity-95 backdrop-blur-lg z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" style="margin: 0; padding: 0; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; position: fixed;">
+    <ul class="text-center space-y-8">
+      {
+        links.map((link) => (
+          <li class="mobile-nav-item text-2xl">
+            <a 
+              href={link.href} 
+              class="text-[#365faf] hover:text-[#2a4b8a] transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<style>
+  .navigation-item {
+    color: #365faf;
+    font-size: 1rem;
+    font-weight: 400;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .navigation-item::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #365faf;
+    transform: scale(0);
+    transform-origin: center;
+    transition: transform 0.6s ease;
+  }
+
+  .navigation-item:hover {
+    transform: scale(1.1);
+  }
+
+  .navigation-item:hover::after {
+    transform: scale(1);
+  }
+
+  /* Estilos para el menú móvil */
+  .mobile-nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+  }
+
+  #mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #mobile-menu.active .mobile-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animación del botón hamburguesa */
+  #bar1 {
+    transform: translate(-50%, -8px);
+  }
+  
+  #bar3 {
+    transform: translate(-50%, 6px);
+  }
+  
+  #menu-toggle.active #bar1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  #menu-toggle.active #bar2 {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+
+  #menu-toggle.active #bar3 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  /* Estilo liquid glass para el menú móvil */
+  #mobile-menu {
+    background: rgba(238, 240, 244, 0.98) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+
+  @media (max-width: 767px) {
+    nav:not(.mobile-nav) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #menu-toggle {
+      display: none;
+    }
+    #mobile-menu {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Variables para el menú hamburguesa
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuItems = document.querySelectorAll('.mobile-nav-item');
+  const header = document.getElementById('header');
+  let isMenuOpen = false;
+  
+  // Asegurarse de que el menú móvil esté en el body
+  if (mobileMenu && document.body) {
+    document.body.appendChild(mobileMenu);
+  }
+
+  // Función para alternar el menú
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      // Abrir menú
+      document.body.style.overflow = 'hidden';
+      menuToggle.classList.add('active');
+      mobileMenu.classList.add('active');
+      
+      // Animación de entrada de los ítems del menú
+      gsap.to(mobileMenuItems, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
+    } else {
+      // Cerrar menú
+      document.body.style.overflow = '';
+      menuToggle.classList.remove('active');
+      
+      // Animación de salida de los ítems del menú
+      gsap.to(mobileMenuItems, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        stagger: -0.1,
+        ease: 'power2.in',
+        onComplete: () => {
+          mobileMenu.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Cerrar menú al hacer clic en un enlace
+  mobileMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
+  });
+
+  // Toggle del menú al hacer clic en el botón
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Cerrar menú al cambiar el tamaño de la ventana si es necesario
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isMenuOpen) {
+      toggleMenu();
+    }
+  });
+  
+  // Asegurar que el menú esté oculto al cargar en pantallas grandes
+  if (window.innerWidth >= 768 && mobileMenu) {
+    mobileMenu.style.display = 'none';
+  }
+
+  // Configuración del efecto de scroll
+  let prevDirection = -1;
+  let expanded = true;
+
+  gsap.set("#header", {
+    boxShadow: "0 0px 0px rgba(0,0,0,0.08)",
+    backgroundColor: "#eef0f4",
+    backdropFilter: "blur(0px)",
+    paddingTop: "10px",
+    paddingBottom: "5px",
+    borderRadius: "10px",
+    top: "0px",
+    duration: 0.6,
+    ease: "power2.out",
+  });
+
+  // Detección de dirección scroll
+  ScrollTrigger.create({
+    start: 0,
+    end: "max",
+    onUpdate: (self) => {
+      // Si el menú móvil está abierto, no aplicar efectos de scroll
+      if (isMenuOpen) return;
+      
+      const direction = self.direction;
+
+      if (direction !== prevDirection) {
+        if (direction === -1 && !expanded) {
+          // Scroll hacia arriba → expandir
+          expanded = true;
+          gsap.to("#header", {
+            boxShadow: "0 0px 0px rgba(0,0,0,0.08)",
+            backgroundColor: "#eef0f4",
+            backdropFilter: "blur(0px)",
+            borderRadius: "10px",
+            top: "0px",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+          gsap.to("#logo", {
+            height: "75px",
+            width: "75px",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+          gsap.to(".navigation-item", {
+            fontSize: "1rem",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        } else if (direction === 1 && expanded) {
+          // Scroll hacia abajo → reducir
+          expanded = false;
+          gsap.to("#header", {
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            backdropFilter: "blur(10px)",
+            paddingTop: "10px",
+            paddingBottom: "5px",
+            backgroundColor: "transparent",
+            top: "10px",
+            borderRadius: "100px",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+          gsap.to("#logo", {
+            height: "50px",
+            width: "50px",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+          gsap.to(".navigation-item", {
+            fontSize: "0.8rem",
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        }
+        prevDirection = direction;
+      }
+    },
+  });
+</script>

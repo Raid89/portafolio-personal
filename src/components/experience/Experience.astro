@@ -1,0 +1,59 @@
+---
+// Component Script (JavaScript/TypeScript code goes here!)
+---
+
+<div
+  class="flex flex-col items-center relative bg-[#1a4b6b] text-white py-12"
+>
+  <div
+    class="z-10 w-[95%] max-w-[1450px] grid grid-cols-1 md:grid-cols-3 gap-12"
+  >
+    <div class="flex flex-col items-center">
+      <h4 class="my-2.5 text-4xl font-bold split">55+</h4>
+      <div class="text-gray-300">Clientes felices</div>
+    </div>
+    <div class="flex flex-col items-center">
+      <h4 class="my-2.5 text-4xl font-bold split">5 años</h4>
+      <div class="text-gray-300">de experiencia</div>
+    </div>
+    <div class="flex flex-col items-center">
+      <h4 class="my-2.5 text-4xl font-bold split">156K+</h4>
+      <div class="text-gray-300 text-center">
+        lineas de codigo escritas
+      </div>
+    </div>
+  </div>
+
+  <!-- Top blue line -->
+  <div
+    class="absolute w-[110dvw] h-[10vh] bg-[#1a4b6b] -rotate-2 -top-8 left-[-4px]"
+  >
+  </div>
+
+  <!-- Bottom blue line -->
+  <div
+    class="absolute w-[110dvw] h-[10vh] bg-[#1a4b6b] -rotate-2 -bottom-8 left-[-4px]"
+  >
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  const mySplitText = new SplitText(".split", { type: "words,chars" });
+
+  // 2. Anima los caracteres solo cuando estén visibles
+  gsap.from(mySplitText.chars, {
+    scrollTrigger: {
+      trigger: ".split",
+      start: "top 80%", // cuando el top del texto alcanza el 80% de la ventana
+      toggleActions: "play none none none", // solo se anima al entrar
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.05,
+    duration: .5,
+    ease: "power2.out",
+  });
+</script>

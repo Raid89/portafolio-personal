@@ -1,0 +1,305 @@
+---
+import CatImage1 from "@assets/gato-astuto-posando.webp";
+import CatImage2 from "@assets/gato-grafica.png";
+import CatImage3 from "@assets/gato-pensando.png";
+import { Image } from "astro:assets";
+
+const HeroContent = [
+  {
+    title: "Tu desarrollador web de confianza, siempre online.",
+    subtitle: "Hola! soy Nicolas Castellanos",
+    text: "Convertir ideas en código y código en resultados: ese ha sido mi camino desde que comencé a desarrollar software.",
+    button: "Conoce más",
+    imageText: "Nicolas Castellanos",
+    image: CatImage1.src,
+  },
+
+  {
+    title: "Transformando ideas en realidades digitales.",
+    subtitle: "La tecnología al servicio de las ideas.",
+    text: "Donde el ingenio impulsa la innovación y la creatividad se traduce en proyectos reales creando resultados excepcionales.",
+    button: "Construye tu idea",
+    imageText: "Ingenio y creatividad",
+    image: CatImage2.src,
+  },
+
+  {
+    title: "Impulsa tu marca en el mundo digital.",
+    subtitle: "actualizandote día a día",
+    text: "Lleva tu presencia digital al siguiente nivel con soluciones tecnológicas modernas. Transforma tu negocio con innovación, tecnología y creatividad.",
+    button: "Da el primer paso",
+    imageText: "Digitaliza tu negocio",
+    image: CatImage3.src,
+  },
+];
+---
+
+<div
+  id="hero-content-data"
+  class="hidden"
+  data-content={JSON.stringify(HeroContent)}
+>
+</div>
+
+<section class="hero max-w-[1440px] mx-auto">
+  <div
+    class="hero__content flex flex-col md:flex-row gap-12 xl:gap-24 align-center justify-center text-cyan"
+  >
+    <div class="hero__image w-full max-w-[800px]">
+      <div class="translate-y-[8px]">
+        <p
+          class="hero__image__text z-0 left w-full xl:text-start md:text-start text-center text-3xl xl:text-6xl font-maker"
+          style="view-transition-name: hero-text"
+        >
+          {HeroContent[0].imageText}
+        </p>
+      </div>
+
+      <div
+        class="aspect-auto rounded-[8px] max-h-[70dvh] overflow-hidden relative"
+      >
+        <div
+          style="view-transition-name: hero-image;"
+          class="hero__image__animate w-full h-full top-0"
+        >
+          <Image
+            loading="eager"
+            fetchpriority="low"
+            src={CatImage1}
+            alt="Imagen ilustrativa del portafolio"
+            class="object-cover w-full h-full z-40 max-h-[70dvh]"
+            inferSize
+          />
+        </div>
+        <button
+          id="hero-next-button"
+          class="absolute right-4 bottom-1/2 translate-y-1/2 z-50 w-12 h-12 rounded-full bg-cyan/20 backdrop-blur-sm flex items-center justify-center text-white text-2xl font-bold hover:bg-cyan/80 hover:scale-110 transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Siguiente imagen"
+        >
+          <span class="relative -right-[1px]">›</span>
+        </button>         
+
+        <button
+          id="hero-prev-button"
+          class="absolute left-4 bottom-1/2 translate-y-1/2 z-50 w-12 h-12 rounded-full bg-cyan/20 backdrop-blur-sm flex items-center justify-center text-white text-2xl font-bold hover:bg-cyan/80 hover:scale-110 transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Imagen anterior"
+        >
+          <span class="relative -left-[1px]">‹</span>
+        </button>
+      </div>
+    </div>
+    <div class="w-full">
+      <div>
+        <div
+          class="hero__text grid md:gap-5 gap-10 pt-5"
+          style="view-transition-name: hero-container;"
+        >
+          <h2 class="uppercase tracking-[1px] text-sm">
+            {HeroContent[0].subtitle}
+          </h2>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl/[1.1] font-semibold"
+          >
+            {HeroContent[0].title}
+          </h1>
+          <p
+            class="text-black text-lg md:text-xl/[1.8] font-light max-w-[500px]"
+          >
+            {HeroContent[0].text}
+          </p>
+          <div class="w-56">
+            <button
+              class="button px-5 py-4 shadow-cyan bg-cyan text-base font-semibold rounded-lg text-white w-full flex justify-between"
+            >
+              <img src="arrow.svg" alt="arrow" width={16} height={16} />
+              <a href="/soon">{HeroContent[0].button}</a>
+              <div></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root::view-transition-old(hero-container) {
+    opacity: 1;
+    animation: fade-out 0.5s ease forwards;
+  }
+
+  :root::view-transition-new(hero-container) {
+    opacity: 0;
+    animation: fade 0.5s 0.5s ease forwards;
+  }
+
+  :root::view-transition-old(hero-text) {
+    opacity: 1;
+    animation: slide-bottom 0.5s ease forwards;
+  }
+
+  :root::view-transition-new(hero-text) {
+    opacity: 0;
+    animation: slide-top 0.5s 0.5s ease forwards;
+  }
+
+  /**/
+  .hero__text {
+    opacity: 0;
+    animation: fade 0.5s ease forwards;
+  }
+
+  :root::view-transition-old(hero-text) {
+    opacity: 1;
+    animation: slide-bottom 0.5s ease forwards;
+  }
+
+  .hero__image__text {
+    opacity: 0;
+    animation: slide-top 0.5s ease forwards;
+  }
+
+  /* Eliminamos las animaciones hero-image para manejarlas con GSAP */
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  }
+
+  @keyframes slide-bottom {
+    from {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-top {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  .hero__image__animate {
+    position: relative;
+    overflow: hidden; /* el contenedor ya recorta correctamente */
+    border-radius: 8px;
+    will-change: transform, opacity;
+    isolation: isolate;
+  }
+
+  .hero__image__animate img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center;
+  }
+</style>
+
+<script>
+  const nextButton = document.querySelector("#hero-next-button");
+  const prevButton = document.querySelector("#hero-prev-button");
+  const heroContent = document.querySelector(
+    "#hero-content-data"
+  ) as HTMLElement;
+  const heroContentData = JSON.parse(heroContent?.dataset.content || "[]");
+  let currentHeroContent = 0;
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      if (currentHeroContent < 2) {
+        document.startViewTransition(() => {
+          currentHeroContent++;
+          viewTransitionAnimation();
+          viewTransitionAnimationTextImage();
+          viewTransitionAnimationImage();
+        });
+      }
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      if (currentHeroContent > 0) {
+        document.startViewTransition(() => {
+          currentHeroContent--;
+          viewTransitionAnimation();
+          viewTransitionAnimationTextImage();
+          viewTransitionAnimationImage();
+        });
+      }
+    });
+  }
+
+  const viewTransitionAnimation = () => {
+    const htmlTemplate = `
+        <h2 class="uppercase tracking-[1px] text-sm">${heroContentData[currentHeroContent].subtitle}</h2>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl/[1.1] font-semibold">${heroContentData[currentHeroContent].title}</h1>
+        <p class="text-black text-lg md:text-xl/[1.8] font-light max-w-[500px]">${heroContentData[currentHeroContent].text}</p>
+        <div class="w-56">
+            <button class="button px-5 py-4 shadow-cyan bg-cyan text-base font-semibold rounded-lg text-white w-full flex justify-between">
+              <img src="arrow.svg" alt="arrow" width={16} height={16} />
+              <a href="/soon">${heroContentData[currentHeroContent].button}</a>
+              <div></div>
+            </button>
+        </div>
+      `;
+
+    const heroText = document.querySelector(".hero__text");
+    if (heroText) {
+      heroText.innerHTML = htmlTemplate;
+    }
+  };
+
+  const viewTransitionAnimationTextImage = () => {
+    const htmlTemplate = heroContentData[currentHeroContent].imageText;
+
+    const heroText = document.querySelector(".hero__image__text");
+    if (heroText) {
+      heroText.innerHTML = htmlTemplate;
+    }
+  };
+
+  const viewTransitionAnimationImage = () => {
+    const htmlTemplate = `
+     
+      <img
+        src="${heroContentData[currentHeroContent].image}"
+        alt="${heroContentData[currentHeroContent].imageText}"
+        class="object-cover w-full h-full z-40 max-h-[70dvh]"
+      />
+      
+    `;
+
+    const heroText = document.querySelector(".hero__image__animate");
+    if (heroText) {
+      heroText.innerHTML = htmlTemplate;
+    }
+  };
+</script>

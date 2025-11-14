@@ -1,0 +1,357 @@
+---
+import { Icon } from 'astro-icon/components';
+
+// Datos del proyecto y logros
+const projectData = {
+  title: "Mi Rol en Betplay",
+  description: "Como desarrollador principal en el proyecto Betplay, lideré iniciativas clave que transformaron la plataforma en una solución de alto rendimiento y escalable.",
+  achievements: [
+    {
+      title: "Arquitectura Escalable",
+      description: "Diseñé e implementé una arquitectura de microservicios que mejoró el rendimiento en un 40% y redujo los tiempos de respuesta en un 60%.",
+      icon: "lucide:layers",
+      color: "from-blue-500 to-cyan-400"
+    },
+    {
+      title: "Optimización de Código",
+      description: "Refactoricé componentes críticos, reduciendo el tiempo de carga inicial en un 35% y mejorando significativamente la experiencia de usuario.",
+      icon: "lucide:zap",
+      color: "from-amber-500 to-yellow-400"
+    },
+    {
+      title: "Liderazgo Técnico",
+      description: "Dirigí un equipo de 5 desarrolladores, estableciendo estándares de código y mejores prácticas que mejoraron la calidad del producto final.",
+      icon: "lucide:users",
+      color: "from-emerald-500 to-teal-400"
+    },
+    {
+      title: "Integración de APIs",
+      description: "Implementé la integración con múltiples proveedores de datos en tiempo real, garantizando una actualización constante de la información.",
+      icon: "lucide:plug",
+      color: "from-violet-500 to-indigo-400"
+    }
+  ],
+  metrics: [
+    { value: "5M+", label: "Usuarios activos mensuales", icon: "lucide:users" },
+    { value: "99.9%", label: "Tiempo de actividad", icon: "lucide:activity" },
+    { value: "60%", label: "Mejora en rendimiento", icon: "lucide:zap" },
+    { value: "4.8/5", label: "Valoración de usuarios", icon: "lucide:star" }
+  ]
+};
+---
+
+<!-- Estilos personalizados para las animaciones -->
+<style>
+  .achievement-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 640px) {
+    .achievement-card:hover {
+      transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .achievement-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .achievement-card:hover .achievement-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .metric-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 180px;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  @media (min-width: 640px) {
+    .metric-item {
+      min-height: 220px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .metric-item {
+      min-height: 240px;
+    }
+  }
+  
+  .metric-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+</style>
+
+<section id="project-scope" class="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white" data-scroll-section>
+  <!-- Elementos decorativos -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-grid-cyan-300 [mask-image:linear-gradient(0deg,white,transparent)]"></div>
+  </div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 sm:mb-16 px-4 sm:px-0">
+      <span class="inline-block text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-3 opacity-0" id="section-tagline">
+        Mi Contribución
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 opacity-0" id="section-title">
+        {projectData.title}
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto opacity-0" id="section-description">
+        {projectData.description}
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-6 opacity-0" id="section-underline"></div>
+    </div>
+
+    <!-- Logros -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-16" id="achievements-grid">
+      {projectData.achievements.map((achievement, index) => (
+        <div 
+          class="achievement-card group bg-white p-5 sm:p-6 rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg border border-gray-100 opacity-0"
+          data-achievement
+          data-delay={index * 0.1}
+        >
+          <div class="flex items-start">
+            <div class={`achievement-icon flex-shrink-0 bg-gradient-to-br ${achievement.color} p-3 rounded-lg text-white mr-4`}>
+              <Icon name={achievement.icon} class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">{achievement.title}</h3>
+              <p class="text-sm sm:text-base text-gray-600">{achievement.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Métricas -->
+    <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 text-white relative overflow-hidden" id="metrics-section">
+      <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5"></div>
+      <div class="relative">
+        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-12 text-center opacity-0" id="metrics-title">Impacto del Proyecto</h3>
+        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-0" id="metrics-grid">
+          {projectData.metrics.map((metric, index) => (
+            <div 
+              class="metric-item text-center bg-white/10 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-xl border border-white/20 opacity-0 flex flex-col items-center"
+              data-metric
+              data-delay={index * 0.1}
+            >
+              <div class="flex justify-center mb-3 sm:mb-4">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center text-white bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:scale-110">
+                  <Icon name={metric.icon} class="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                </div>
+              </div>
+              <div class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">{metric.value}</div>
+              <div class="text-xs sm:text-sm md:text-base opacity-90 font-medium text-white/90">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Elementos decorativos -->
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full mix-blend-overlay"></div>
+      <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-cyan-400/20 rounded-full mix-blend-overlay"></div>
+    </div>
+
+    <!-- Testimonio -->
+    <div class="mt-16 bg-white rounded-xl shadow-lg p-8 border border-gray-100 max-w-4xl mx-auto opacity-0" id="testimonial">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 md:mr-6 floating">
+          <span>JD</span>
+        </div>
+        <div class="text-center md:text-left">
+          <blockquote class="text-lg text-gray-700 italic mb-4">
+            "El trabajo realizado en la plataforma de Betplay ha sido excepcional. La arquitectura implementada ha permitido escalar el servicio a millones de usuarios sin comprometer el rendimiento."
+          </blockquote>
+          <div class="font-medium text-gray-900">Juan Díaz</div>
+          <div class="text-sm text-gray-500">CTO en Betplay Colombia</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Elementos decorativos flotantes -->
+    <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+    <div class="absolute -top-20 -right-20 w-40 h-40 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+  </div>
+
+  <script>
+    import gsap from 'gsap';
+    import scrollTrigger from "gsap/ScrollTrigger";
+    
+    // Animaciones con GSAP
+    document.addEventListener('DOMContentLoaded', () => {
+      // Registrar plugins
+      gsap.registerPlugin(scrollTrigger);
+      
+      // Animación del encabezado
+      const headerTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
+      
+      headerTl
+        .fromTo('#section-tagline', 
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1 }
+        )
+        .fromTo('#section-title', 
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1 }, '-=0.4'
+        )
+        .fromTo('#section-description', 
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1 }, '-=0.4'
+        )
+        .fromTo('#section-underline', 
+          { scaleX: 0, opacity: 0 },
+          { scaleX: 1, opacity: 1, transformOrigin: 'center' }, '-=0.4'
+        );
+      
+      // Animación de las tarjetas de logros
+      const achievementCards = document.querySelectorAll('[data-achievement]');
+      
+      achievementCards.forEach((card, index) => {
+        const delay = parseFloat(card.getAttribute('data-delay') || 0);
+        
+        gsap.fromTo(card,
+          { 
+            y: 50, 
+            opacity: 0,
+            rotateX: -10,
+            transformPerspective: 1000
+          },
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 0.8,
+            delay: 0.5 + delay,
+            ease: 'back.out(1.4)',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+      
+      // Animación del título de métricas
+      gsap.fromTo('#metrics-title',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: '#metrics-section',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+      
+      // Animación de las métricas
+      const metrics = document.querySelectorAll('[data-metric]');
+      
+      metrics.forEach((metric, index) => {
+        const delay = parseFloat(metric.getAttribute('data-delay') || 0);
+        
+        gsap.fromTo(metric,
+          { 
+            y: 30, 
+            opacity: 0,
+            scale: 0.95
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            delay: 0.3 + delay,
+            ease: 'back.out(1.6)',
+            scrollTrigger: {
+              trigger: '#metrics-grid',
+              start: 'top 90%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+      
+      // Animación del testimonio
+      gsap.fromTo('#testimonial',
+        { 
+          y: 50, 
+          opacity: 0,
+          scale: 0.98
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          delay: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#testimonial',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+      
+      // Efecto parallax en el fondo
+      const parallaxTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#project-scope',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+      
+      parallaxTl.to('#project-scope .bg-grid-cyan-300', {
+        yPercent: 10,
+        ease: 'none'
+      }, 0);
+    });
+  </script>
+  
+  <style>
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .achievement-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</section>

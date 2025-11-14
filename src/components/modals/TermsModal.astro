@@ -1,0 +1,130 @@
+---
+const { id = "terms-modal", title = "Términos y Condiciones" } = Astro.props;
+---
+
+<dialog id={id} class="privacy-modal" aria-label={title}>
+    <div class="privacy-modal-content" role="document">
+        <div class="privacy-modal-header">
+            <h2 class="privacy-modal-title">{title}</h2>
+            <button
+                class="privacy-modal-close"
+                onclick="this.closest('dialog').close()"
+                aria-label="Cerrar">✕</button
+            >
+        </div>
+        <div class="privacy-modal-body">
+            <slot>
+                <h3>Introducción</h3>
+                <p>
+                    Bienvenido a nuestros Términos y Condiciones. A continuación
+                    encontrarás la información relevante sobre el uso de este
+                    sitio y servicios.
+                </p>
+
+                <h3>Uso del servicio</h3>
+                <p>
+                    Al usar este sitio, aceptas cumplir con estos términos y
+                    todas las leyes aplicables.
+                </p>
+
+                <h3>Propiedad intelectual</h3>
+                <p>
+                    Todo el contenido es propiedad de su respectivo titular y
+                    está protegido por leyes de propiedad intelectual.
+                </p>
+
+                <h3>Limitación de responsabilidad</h3>
+                <p>
+                    Este sitio se ofrece "tal cual" y no garantizamos su
+                    funcionamiento ininterrumpido o libre de errores.
+                </p>
+
+                <h3>Modificaciones</h3>
+                <p>
+                    Podemos modificar estos términos en cualquier momento.
+                    Revisa esta página periódicamente.
+                </p>
+
+                <h3>Contacto</h3>
+                <p>
+                    Si tiene preguntas sobre estos términos, contáctenos a
+                    través de los medios disponibles.
+                </p>
+            </slot>
+        </div>
+        <div class="privacy-modal-actions">
+            <button
+                class="privacy-modal-close"
+                onclick="this.closest('dialog').close()">Cerrar</button
+            >
+        </div>
+    </div>
+</dialog>
+
+<script client:load>
+    window.openModal = (id) => {
+        const el = document.getElementById(id);
+        if (el?.showModal) el.showModal();
+    };
+</script>
+
+<style>
+    .privacy-modal {
+        border: none;
+        border-radius: 12px;
+    }
+    .privacy-modal-content {
+        padding: 1rem;
+        transform: scale(0.95);
+        opacity: 0;
+        transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+    }
+    .privacy-modal[open] .privacy-modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .privacy-modal::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .privacy-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+    }
+    .privacy-modal-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+    .privacy-modal-close {
+        background: transparent;
+        border: 0;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+    .privacy-modal-body {
+        padding: 0.75rem 0;
+    }
+    .privacy-modal-body h3 {
+        margin: 0.75rem 0 0.25rem;
+        font-size: 1.05rem;
+    }
+    .privacy-modal-body p {
+        margin: 0.25rem 0 0.75rem;
+        color: #333;
+    }
+    .privacy-modal-actions {
+        padding-top: 0.5rem;
+        border-top: 1px solid #eee;
+        text-align: right;
+    }
+    @media (max-width: 600px) {
+        .privacy-modal-title {
+            font-size: 1.1rem;
+        }
+    }
+</style>

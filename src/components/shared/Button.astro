@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets'
+import Arrow from "@assets/arrow.svg"
+---
+
+
+
+<button class="button px-5 py-4 shadow-cyan bg-cyan text-base font-semibold rounded-lg text-white w-full flex justify-between cursor-pointer">
+    <Image src={Arrow} alt="arrow" width={16} height={16} />
+    <slot />
+    <div></div>
+</button>

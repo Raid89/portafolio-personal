@@ -1,0 +1,106 @@
+---
+import Button from "@components/shared/Button.astro";
+import PracticeCard from "@components/practices/PracticeCard.astro";
+import PataTuerca from "@assets/pata-tuerca.png";
+import EquipoTrabajo from "@assets/equipo-de-trabajo.png";
+import ZorroTrabajando from "@assets/zorro-trabajando.png";
+import TuercaIdea from "@assets/tuerca-idea.png";
+
+const DataCard = [
+  {
+    title: "Código Limpio, Sostenible y Escalable",
+    description:
+      "Me especializo en escribir código optimizado y de alta calidad, asegurando que tus proyectos sean fáciles de mantener y puedan crecer sin límites.",
+    image: PataTuerca,
+  },
+  {
+    title: "Experiencia de Usuario Intuitiva",
+    description:
+      "Cada línea de código que escribo tiene como objetivo crear interfaces intuitivas y amigables, garantizando que los usuarios disfruten de una navegación fluida.",
+    image: EquipoTrabajo,
+  },
+  {
+    title: "Solución de Problemas y Metodologías Ágiles",
+    description:
+      "Mi enfoque va más allá del código. Identifico desafíos, aplico metodologías ágiles y diseño arquitecturas robustas para entregar soluciones de alta calidad",
+    image: ZorroTrabajando,
+  },
+  {
+    title: "Colaboración y Crecimiento Continuo",
+    description:
+      "Me integro fácilmente a equipos, contribuyo con ideas y código, y estoy en constante aprendizaje de nuevas tecnologías para ofrecer soluciones innovadoras y sostenibles.",
+    image: TuercaIdea,
+  },
+];
+---
+
+<section class="max-w-[1440px] mx-auto">
+  <div class="flex flex-col items-center justify-center gap-12">
+    <h2
+      class="practice-title max-w-[600px] md:max-w-[800px] text-4xl md:text-6xl font-bold text-center cursor-none overflow-hidden px-5 pb-2"
+    >
+      La travesía hacia un código de calidad comienza hoy.
+    </h2>
+    <div class="max-w-[250px] w-full">
+      <Button>¡Contactame!</Button>
+    </div>
+  </div>
+
+  <div
+    class="grid gap-24 grid-cols-1 md:grid-cols-2 p-5 items-center justify-items-center justify-center mt-[100px] overflow-hidden"
+  >
+    {
+      DataCard.map((card, index) => (
+        <PracticeCard
+          key={index}
+          title={card.title}
+          description={card.description}
+          image={card.image}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  import SplitText from "gsap/SplitText";
+
+  const split = new SplitText(".practice-title", { type: "words" });
+  const chars = split.words;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(chars, {
+    scrollTrigger: {
+      trigger: ".practice-title",
+      start: "top 80%",
+      toggleActions: "play none none none",
+      scrub: true,
+    },
+    opacity: 0,
+    x: 50,
+    ease: "power2.out",
+  });
+
+  chars.forEach((char) => {
+    char.addEventListener("mouseenter", () => {
+      gsap.fromTo(
+        char,
+        {
+          color: "#000",
+          textShadow: "0 0 8px #467ca0",
+          scale: 1.2,
+        },
+        {
+          color: "#000",
+          textShadow: "0 0 0 transparent",
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        }
+      );
+    });
+  });
+</script>
