@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^9.0.1",
     "@fontsource-variable/raleway": "^5.2.8",
     "@fontsource/permanent-marker": "^5.2.7",
     "@iconify-json/lucide": "^1.2.71",
