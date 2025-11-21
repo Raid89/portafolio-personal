@@ -313,8 +313,7 @@ import { Image } from "astro:assets";
         width: 420px;
         height: 420px;
         border-radius: 50%;
-        background:
-            radial-gradient(
+        background: radial-gradient(
                 circle at 30% 30%,
                 rgba(99, 102, 241, 0.55),
                 transparent 40%
@@ -548,13 +547,20 @@ import { Image } from "astro:assets";
             submitSpinner?.classList.remove("hidden");
 
             try {
-                // Aquí iría la lógica para enviar el formulario
-                // Por ejemplo, usando fetch para enviar los datos a un endpoint
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
 
-                // Simulamos un envío con un timeout
-                await new Promise((resolve) => setTimeout(resolve, 1500));
+                const response = await fetch("/api/send-email", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(
+                        result.message || "Error al enviar el mensaje",
+                    );
+                }
 
                 // Mostrar mensaje de éxito
                 formStatus.innerHTML = `
@@ -583,7 +589,7 @@ import { Image } from "astro:assets";
               </svg>
               <span class="font-medium">Error al enviar el mensaje</span>
             </div>
-            <p class="mt-2 text-sm">Lo sentimos, ha ocurrido un error al intentar enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.</p>
+            <p class="mt-2 text-sm">${(error as any).message || "Lo sentimos, ha ocurrido un error al intentar enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."}</p>
           </div>
         `;
             } finally {
@@ -630,53 +636,4 @@ import { Image } from "astro:assets";
             });
         });
     });
-</script>
-
-<script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-    if (form) {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const payload = {
-                name: String(data.get("name") ?? "").trim(),
-                email: String(data.get("email") ?? "").trim(),
-                subject: String(data.get("subject") ?? "").trim(),
-                message: String(data.get("message") ?? "").trim(),
-            };
-
-            if (
-                !payload.name ||
-                !payload.email ||
-                !payload.subject ||
-                !payload.message
-            ) {
-                if (status) {
-                    status.textContent = "Por favor completa todos los campos.";
-                    status.style.color = "#e11d48";
-                }
-                return;
-            }
-
-            if (status) {
-                status.textContent = "Enviando...";
-                status.style.color = "#374151";
-            }
-
-            try {
-                await new Promise((r) => setTimeout(r, 700));
-                if (status) {
-                    status.textContent = "Mensaje enviado. ¡Gracias!";
-                    status.style.color = "#10b981";
-                }
-                form.reset();
-            } catch {
-                if (status) {
-                    status.textContent = "Error al enviar. Intenta nuevamente.";
-                    status.style.color = "#e11d48";
-                }
-            }
-        });
-    }
 </script>
