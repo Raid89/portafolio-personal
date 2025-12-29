@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import Betplay from "@assets/screenshots/betplay1.png";
-import SuiteSlyfox from "@assets/screenshots/suite-slyfox.png"
-import ControlNext from "@assets/screenshots/controlnext.png"
+import SuiteSlyfox from "@assets/screenshots/americana.png"
+import ControlNext from "@assets/screenshots/mimultiserv.png"
 import { Image } from "astro:assets";
 
 // Component Script (JavaScript/TypeScript code goes here!)
@@ -24,7 +24,7 @@ const works: Work[] = [
         id: 1,
         title: "Betplay",
         description:
-            "Descripción detallada del proyecto 1 y las tecnologías utilizadas.",
+            "Plataforma de apuestas deportivas en línea.",
         image: Betplay,
         tags: ["angular", "nestjs", "mongo", "sass", "postgres", "typescript"],
         demoUrl: "/betplay",
@@ -32,9 +32,9 @@ const works: Work[] = [
     },
     {
         id: 3,
-        title: "ControlNext",
+        title: "Mi Multiserv",
         description:
-            "Descripción detallada del proyecto 2 y las tecnologías utilizadas.",
+            "Landing page para una plataforma de servicios múltiples.",
         image: ControlNext,
         tags: [
             "react",
@@ -45,14 +45,14 @@ const works: Work[] = [
             "postgres",
             "graphql",
         ],
-        demoUrl: "/soon",
+        demoUrl: "https://www.mimultiserv.com/",
         codeUrl: "#",
     },
     {
         id: 4,
-        title: "Suite Slyfox",
+        title: "Americana Academy",
         description:
-            "Descripción detallada del proyecto 2 y las tecnologías utilizadas.",
+            "Plataforma educativa para una academia en línea.",
         image: SuiteSlyfox,
         tags: [
             "astro",
@@ -63,7 +63,7 @@ const works: Work[] = [
             "postgres",
             "prisma",
         ],
-        demoUrl: "/soon",
+        demoUrl: "https://americana-landing.vercel.app/",
         codeUrl: "#",
     },
 ];
@@ -102,7 +102,7 @@ const works: Work[] = [
                                         <Icon name={tag} class="tech-icon" />
                                     ))}
                                 </div>
-                                <a href={work.demoUrl} class="block mt-4">
+                                <a target="_blank" href={work.demoUrl} class="block mt-4">
                                     <h3 class="text-xl font-semibold text-gray-900">
                                         {work.title}
                                     </h3>
@@ -114,6 +114,7 @@ const works: Work[] = [
                             <div class="mt-6 flex items-center justify-between">
                                 {work.demoUrl && (
                                     <a
+                                        target="_blank"
                                         href={work.demoUrl}
                                         rel="noopener noreferrer"
                                         class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
