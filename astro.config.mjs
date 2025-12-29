@@ -1,6 +1,6 @@
 // @ts-check
 import tailwindcss from '@tailwindcss/vite';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 
@@ -12,5 +12,5 @@ export default defineConfig({
   },
 
   integrations: [icon()],
-  adapter: vercel()
+  adapter: vercel({})
 });
